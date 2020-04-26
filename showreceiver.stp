@@ -1,0 +1,6 @@
+#!/usr/bin/stap
+probe process("FESHQServer").function("ProcessQuoteMessage@receiver.cpp:765")
+{
+	#if($pQuoto->Contract->Commodity->ExchangeNo$== ""CBOT"")
+	printf("%s %s %s %s %s %s\n",$pQuoto->Contract->Commodity->ExchangeNo$,$pQuoto->Contract->Commodity->CommodityType$,$pQuoto->Contract->Commodity->CommodityNo$, $pQuoto->Contract->ContractNo1$,$pQuoto->DateTimeStamp$,ctime(gettimeofday_s()))
+} 

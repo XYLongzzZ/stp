@@ -1,0 +1,5 @@
+md5sum $1 > $1.md5
+touch readme.txt
+echo -e $2 > readme.txt
+rm $1.tgz
+tar -zcvf $1.tgz $1 $1.md5 readme.txt
